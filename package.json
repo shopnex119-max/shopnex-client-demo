@@ -1,0 +1,18 @@
+{
+  "name": "shopnex-ultimate",
+  "private": true,
+  "version": "0.3.0",
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "dev": "pnpm --dir apps/desktop dev",
+    "build": "pnpm --dir apps/desktop build",
+    "check": "pnpm --dir apps/desktop check",
+    "desktop:dev": "pnpm --dir apps/desktop tauri dev",
+    "desktop:build": "pnpm --dir apps/desktop tauri build",
+    "api:dev": "bash scripts/run-api.sh",
+    "api:test": "cd services/api && .venv/bin/pytest -q"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.3"
+  }
+}

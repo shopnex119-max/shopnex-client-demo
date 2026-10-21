@@ -1,0 +1,61 @@
+name: Windows offline desktop package
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/desktop/**'
+      - 'services/api/**'
+      - '.github/workflows/windows-offline.yml'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    name: Build one-file Windows installer
+    runs-on: windows-latest
+    steps:
+      - name: Check out private source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install API and freezer dependencies
+        run: python -m pip install -r services/api/requirements.txt pyinstaller==6.15.0
+      - name: Freeze local API and migrations
+        shell: pwsh
+        run: >-
+          pyinstaller --noconfirm --clean --onedir --name SHOPNEX-API
+          --distpath services/api/dist --workpath services/api/build
+          --paths services/api
+          --add-data "services/api/alembic.ini;."
+          --add-data "services/api/alembic;alembic"
+          services/api/desktop_launcher.py
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install frontend dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build the single NSIS setup executable
+        run: pnpm --dir apps/desktop tauri build --bundles nsis
+      - name: Stage the customer installer only
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path release-customer | Out-Null
+          Copy-Item apps/desktop/src-tauri/target/release/bundle/nsis/*-setup.exe release-customer/
+      - name: Upload the one-file installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SHOPNEX-Windows-Setup-${{ github.sha }}
+          path: release-customer/*-setup.exe
+          if-no-files-found: error
+          retention-days: 30

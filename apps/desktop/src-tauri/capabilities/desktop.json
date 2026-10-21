@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "desktop",
+  "description": "Minimal capability for the primary SHOPNEX desktop window.",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

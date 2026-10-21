@@ -1,0 +1,1 @@
+{"default":{"identifier":"default","description":"Minimal desktop window capability for SHOPNEX.","local":true,"windows":["main"],"permissions":["core:default"]},"desktop":{"identifier":"desktop","description":"Minimal capability for the primary SHOPNEX desktop window.","local":true,"windows":["main"],"permissions":["core:default"]}}

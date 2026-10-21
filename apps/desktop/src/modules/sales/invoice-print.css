@@ -1,0 +1,68 @@
+.invoice-print-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:24px;background:rgba(7,13,24,.78);backdrop-filter:blur(9px)}
+.invoice-print-modal{width:min(100%,820px);margin:auto;border:1px solid rgba(148,163,184,.24);border-radius:18px;background:#111a2a;box-shadow:0 28px 90px rgba(0,0,0,.42);overflow:hidden}
+.invoice-print-actions{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid rgba(148,163,184,.18);background:#111a2a;color:#f4f6fb;font-size:12px;font-weight:700}
+.invoice-print-actions>div{display:flex;align-items:center;gap:8px}
+.invoice-print-paper{width:min(100%,520px);margin:20px auto;padding:25px 27px;background:#fff;color:#111827;border-radius:10px;box-shadow:0 12px 44px rgba(0,0,0,.18);font-family:Inter,'IBM Plex Sans Arabic',sans-serif;font-size:11px;line-height:1.65}
+.receipt-brand-row{display:flex;align-items:center;gap:10px;padding-bottom:16px;border-bottom:1px solid #e5e7eb}
+.receipt-brand-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:#0f766e;color:#fff;font-size:19px;font-weight:900}
+.receipt-brand-copy{display:flex;flex:1;flex-direction:column;min-width:0}
+.receipt-brand-copy b{overflow:hidden;color:#111827;font-size:15px;text-overflow:ellipsis;white-space:nowrap}
+.receipt-brand-copy small,.receipt-footer small{color:#64748b;font-size:9px}
+.receipt-mode-badge{padding:4px 7px;border:1px solid #dbeafe;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:8px;font-weight:800;white-space:nowrap}
+.receipt-mode-badge.receipt-demo{border-color:#fde68a;background:#fffbeb;color:#92400e}
+.receipt-title-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:17px 0 13px}
+.receipt-title-row .eyebrow,.receipt-barcode-block .eyebrow,.receipt-qr-block .eyebrow{color:#64748b;font-size:8px;letter-spacing:.08em}
+.receipt-title-row h1{margin:3px 0 0;color:#0f172a;font-size:17px;overflow-wrap:anywhere}
+.receipt-invoice-type{padding:5px 8px;border-radius:6px;background:#f1f5f9;color:#334155;font-size:9px;font-weight:700;text-align:center}
+.receipt-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px 16px;padding:12px 0;border-top:1px solid #eef2f7;border-bottom:1px solid #eef2f7}
+.receipt-meta-grid>div{display:flex;min-width:0;flex-direction:column;gap:2px}
+.receipt-meta-grid span,.receipt-totals span,.receipt-payments span{color:#64748b;font-size:9px}
+.receipt-meta-grid b{color:#1e293b;font-size:10px;overflow-wrap:anywhere}
+.receipt-lines-wrap{margin-top:13px}
+.receipt-lines-table{width:100%;border-collapse:collapse;table-layout:auto}
+.receipt-lines-table th{padding:7px 4px;border-bottom:1px solid #cbd5e1;color:#64748b;font-size:8px;text-align:start}
+.receipt-lines-table td{padding:9px 4px;border-bottom:1px solid #eef2f7;color:#334155;font-size:9px;vertical-align:top}
+.receipt-lines-table td:not(:first-child),.receipt-lines-table th:not(:first-child){text-align:end;white-space:nowrap}
+.receipt-lines-table td:first-child{max-width:190px}
+.receipt-lines-table td:first-child b,.receipt-lines-table td:first-child small{display:block;overflow-wrap:anywhere}
+.receipt-lines-table td:first-child b{color:#0f172a;font-size:10px}
+.receipt-lines-table td:first-child small{color:#64748b;font-size:8px}
+.receipt-lines-table td:last-child b{color:#0f172a}
+.receipt-no-lines{padding:15px 10px;border:1px dashed #cbd5e1;border-radius:7px;color:#64748b;font-size:9px;text-align:center}
+.receipt-totals{display:grid;gap:6px;margin-top:13px}
+.receipt-totals>div,.receipt-payments>div{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.receipt-totals b,.receipt-payments b{color:#1e293b;font-size:10px}
+.receipt-grand-total{margin:3px 0;padding:9px 0;border-top:1px solid #cbd5e1;border-bottom:1px solid #cbd5e1}
+.receipt-grand-total span,.receipt-grand-total b{color:#0f172a;font-size:12px;font-weight:800}
+.receipt-payments{display:grid;gap:5px;margin-top:13px;padding-top:10px;border-top:1px solid #eef2f7}
+.receipt-payments>.eyebrow{margin-bottom:2px;color:#64748b;font-size:8px}
+.receipt-codes{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-top:18px;padding-top:14px;border-top:1px dashed #cbd5e1}
+.receipt-barcode-block,.receipt-qr-block{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0}
+.receipt-barcode-block{flex:1}
+.receipt-barcode{width:100%;max-width:260px;height:50px;overflow:visible}
+.receipt-barcode-block code{color:#334155;font-family:monospace;font-size:9px;overflow-wrap:anywhere;text-align:center}
+.receipt-qr-box{display:grid;place-items:center;width:158px;height:158px;padding:4px;border:1px solid #e2e8f0;border-radius:6px;background:#fff}
+.receipt-qr-box svg{display:block;width:150px;height:150px;shape-rendering:crispEdges}
+.receipt-qr-block small{color:#64748b;font-size:8px;text-align:center}
+.receipt-footer{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:18px;padding-top:12px;border-top:1px solid #e5e7eb;text-align:center}
+.receipt-footer b{color:#0f172a;font-size:11px}
+.receipt-footer>span{color:#64748b;font-size:8px}
+.receipt-footer small{max-width:100%;font-size:7px;line-height:1.5}
+@media(max-width:620px){.invoice-print-overlay{padding:8px}.invoice-print-paper{margin:9px auto;padding:18px 15px}.invoice-print-actions{padding:10px}.receipt-codes{gap:6px}.receipt-qr-box{width:130px;height:130px}.receipt-qr-box svg{width:122px;height:122px}}
+@media print{
+  @page{size:80mm 270mm;margin:3mm}
+  html,body{width:100%;height:auto!important;margin:0!important;padding:0!important;background:#fff!important;color:#111827!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  #root{display:none!important}
+  body *{visibility:hidden!important}
+  .invoice-print-overlay,.invoice-print-overlay *{visibility:visible!important}
+  .invoice-print-overlay{position:static!important;display:block!important;inset:auto!important;overflow:visible!important;width:100%!important;height:auto!important;margin:0!important;padding:0!important;background:#fff!important;backdrop-filter:none!important}
+  .invoice-print-modal{position:static!important;width:100%!important;max-width:none!important;margin:0!important;border:0!important;border-radius:0!important;background:#fff!important;box-shadow:none!important;overflow:visible!important}
+  .invoice-print-actions{display:none!important}
+  .invoice-print-paper{width:100%!important;max-width:none!important;margin:0!important;padding:0!important;border-radius:0!important;background:#fff!important;color:#111827!important;box-shadow:none!important;font-size:9pt!important}
+  .receipt-brand-row,.receipt-meta-grid,.receipt-lines-table tr,.receipt-totals,.receipt-codes,.receipt-footer{break-inside:avoid;page-break-inside:avoid}
+  .receipt-qr-box{width:38mm!important;height:38mm!important;padding:1mm!important;border:0!important}
+  .receipt-qr-box svg{width:36mm!important;height:36mm!important}
+  .receipt-barcode{max-width:38mm!important;height:16mm!important}
+  .receipt-barcode-block{max-width:38mm!important}
+  .receipt-codes{gap:2mm!important}
+}
